@@ -1,42 +1,29 @@
 /*
-Cho một mảng các chuỗi, viết chương trình trả về mảng mới chứa các chuỗi có độ dài lớn nhất.
-
-Ví dụ: INPUT là [“BINH”, “HUNG”, “PHUOC”, “CAO”, “KHANH”] thì 
-OUTPUT return là [“PHUOC”, “KHANH”]
+Nhập vào một mảng các số nguyên, tìm cặp hai số liền kề có tích lớn nhất và trả về kết quả của phép nhân 2 số đó.
+Ví dụ: INPUT là [2, 3, -5, -2, 4] thì OUTPUT là 10 (cặp -5 và -2 có tích là 10)
 
  */
 
 //O(n)
-function allLongestStrings(inputArray) {
-    let outputArr = [];
-    let max = 0;
-
-    for (i = 0; i < inputArray.length; i++) {
-        if (inputArray[i].length > max) {
-            max = inputArray[i].length;
-        }
+function adjacentElementsProduct(inputArray) {
+    let max = Number.MIN_SAFE_INTEGER; // account for all integers are negative case
+    for (let i = 0; i < inputArray.length - 1; i++) {
+        let product = inputArray[i] * inputArray[i + 1];
+        if (product > max) max = product;
     }
-
-    for (j = 0; j < inputArray.length; j++) {
-        if (inputArray[j].length == max && !outputArr.includes(inputArray[j])) {
-            //avoid duplicate strings
-            outputArr.push(inputArray[j]);
-        }
-    }
-
-    console.log(outputArr);
+    console.log(max);
 }
 
-allLongestStrings(["BINH", "HUNG", "PHUOC", "CAO", "KHANH"]);
-allLongestStrings(["BINH", "HUNG", "PHUOC", "CAO", "KHANH", "KHANH"]);
+adjacentElementsProduct([2, 3, -5, -2, 4]);
+adjacentElementsProduct([-3, -5, -2, -5]);
+adjacentElementsProduct([-1, -5, -2, 0]);
 
 /*
- Có một nhóm người đang đứng thành một hàng, để chia ra làm 2 đội từ hàng người thì quản trò chia như sao. Người đứng thứ nhất vào Team 1, người đúng thứ hai vào Team 2, người đứng thứ ba vào lại Team 1, cứ tiếp tục như thế cho đến người cuối cùng.
- Viết chương trình có đầu vào là một mảng chưa cân nặng của tất cả mọi người theo thứ tự hàng ban đầu và yêu cầu trả về mảng chưa tổng cân nặng của 2 team.
- 
- Ví dụ: INPUT [60, 40, 55, 75, 64] thì OUTPUT là [179, 115]
- 
-  */
+Có một nhóm người đang đứng thành một hàng, để chia ra làm 2 đội từ hàng người thì quản trò chia như sau. Người đứng thứ nhất vào Team 1, người đúng thứ hai vào Team 2, người đứng thứ ba vào lại Team 1, cứ tiếp tục như thế cho đến người cuối cùng.
+Viết chương trình có đầu vào là một mảng chứa cân nặng của tất cả mọi người theo thứ tự hàng ban đầu và yêu cầu trả về mảng chưa tổng cân nặng của 2 team.
+
+Ví dụ: INPUT [60, 40, 55, 75, 64] thì OUTPUT là [179, 115]
+ */
 
 //O(n)
 function alternatingSums(a) {
