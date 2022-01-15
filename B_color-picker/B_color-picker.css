@@ -1,0 +1,18 @@
+body {
+    text-align: center;
+    display: block;
+}
+img {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+}
+
+.random-color {
+    padding: 1rem 0 0 0;
+    width: 350px;
+    height: 150px;
+    margin: auto;
+    line-height: 1.1;
+    border: solid limegreen;
+}
